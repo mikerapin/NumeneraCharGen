@@ -1,26 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace NumeneraCharGen.Models
 {
-    public class Type
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("numeneradb.types")]
+    public partial class Type
     {
-        public int Type_Id { get; set; }
+        [Key]
+        public int Type_id { get; set; }
+
+        [Required]
+        [StringLength(75)]
         public string Name { get; set; }
-        public int Might { get; set; }
-        public int Speed { get; set; }
-        public int Intellect { get; set; }
-        public int Might_Edge { get; set; }
-        public int Speed_Edge { get; set; }
-        public int Intellect_Edge { get; set; }
-        public int Effort { get; set; }
+
+        public int? Might { get; set; }
+
+        public int? Speed { get; set; }
+
+        public int? Intellect { get; set; }
+
+        public int? Might_edge { get; set; }
+
+        public int? Speed_edge { get; set; }
+
+        public int? Intellect_edge { get; set; }
+
+        public int? Effort { get; set; }
+
+        [StringLength(150)]
         public string Traits { get; set; }
+
+        [StringLength(150)]
         public string Training { get; set; }
+
+        [StringLength(150)]
         public string Inability { get; set; }
+
+        [StringLength(150)]
         public string Equipment { get; set; }
-        public int Shins { get; set; }
+
+        public int? Shins { get; set; }
+
+        [StringLength(50)]
         public string Page { get; set; }
     }
 }

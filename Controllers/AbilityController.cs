@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MySql.Data;
+using NumeneraCharGen.Models;
 
 namespace NumeneraCharGen.Controllers
 {
     public class AbilityController : Controller
     {
+        // Test reference to db
+        private NumeneraDb db = new NumeneraDb();
         // GET: Ability
         public ActionResult Index()
         {
