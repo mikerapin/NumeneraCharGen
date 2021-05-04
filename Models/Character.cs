@@ -10,7 +10,7 @@ namespace NumeneraCharGen.Models
     public partial class Character
     {
         [Key]
-        public int Characrer_id { get; set; }
+        public int Character_id { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -21,5 +21,14 @@ namespace NumeneraCharGen.Models
         public int? Type_id { get; set; }
 
         public int? Focus_id { get; set; }
+
+        [NotMapped]
+        public List<Descriptor> DescriptorData { get; set; }
+
+        [NotMapped]
+        public List<Type> TypeData { get; set; }
+
+        [NotMapped]
+        public List<Focus> FocusData { get; set; }
     }
 }

@@ -10,10 +10,13 @@ namespace NumeneraCharGen.Controllers
 {
     public class FocusController : Controller
     {
+        private readonly NumeneraDb db = new NumeneraDb();
+
         // GET: Focus
         public ActionResult Index()
         {
-            return View();
+            var foci = db.Foci.OrderBy(d => d.Name);
+            return View(foci.ToList());
         }
 
         // GET: Focus/Details/5

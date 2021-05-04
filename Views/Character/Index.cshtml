@@ -1,0 +1,41 @@
+﻿@model NumeneraCharGen.Models.Character
+
+@{
+    ViewBag.Title = "Character Creation";
+}
+
+<h2>Character Creation</h2>
+
+<p>Creating a character is as easy as describing them!</p>
+
+<div>
+    <span>I am a... </span>
+    <select name="Descriptors" id=" descriptors">
+        <optgroup label="Descriptor">
+            <option value=""></option> <!-- One blank -->
+            @foreach (var item in Model.DescriptorData)
+            {
+                <option value="@item.Descriptor_id">@item.Name</option>
+            }
+        </optgroup>
+    </select>
+    <select name="Types" id=" types">
+        <optgroup label="Types">
+            <option value=""></option> <!-- One blank -->
+            @foreach (var item in Model.TypeData)
+            {
+                <option value="@item.Type_id">@item.Name</option>
+            }
+        </optgroup>
+    </select>
+    <span>  who  </span>
+    <select name="Focus" id="focus">
+        <optgroup label="Focus">
+            <option value=""></option> <!-- One blank -->
+            @foreach (var item in Model.FocusData)
+            {
+                <option value="@item.Focus_id">@item.Name</option>
+            }
+        </optgroup>
+    </select>
+</div>
