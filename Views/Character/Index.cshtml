@@ -6,10 +6,30 @@
 
 <h2>Character Creation</h2>
 
-<p>Creating a character is as easy as describing them!</p>
+<b>Creating a character is as easy as describing them!</b>
+
+
+<div>
+    @Html.LabelFor(x => Model.DescriptorData)
+    @Html.DropDownListFor(x => Model.DescriptorData, new SelectList(Model.DescriptorData, "Descriptor_id", "Name"), htmlAttributes: new { @class = "form-control", id = "Description" })
+    @Html.ValidationMessageFor(x => x.DescriptorData, "", new { @class = "text=danger" })
+</div>
+
+<div>
+    @Html.LabelFor(x => Model.TypeData)
+    @Html.DropDownListFor(x => Model.TypeData, new SelectList(Model.TypeData, "Type_id", "Name"), htmlAttributes: new { @class = "form-control", id = "Description" })
+    @Html.ValidationMessageFor(x => x.TypeData, "", new { @class = "text=danger" })
+</div>
+
+<div>
+    @Html.LabelFor(x => Model.FocusData)
+    @Html.DropDownListFor(x => Model.FocusData, new SelectList(Model.FocusData, "Focus_id", "Name"), htmlAttributes: new { @class = "form-control", id = "Description" })
+    @Html.ValidationMessageFor(x => x.FocusData, "", new { @class = "text=danger" })
+</div>
 
 <div>
     <span>I am a... </span>
+
     <select name="Descriptors" id=" descriptors">
         <optgroup label="Descriptor">
             <option value=""></option> <!-- One blank -->
@@ -38,4 +58,7 @@
             }
         </optgroup>
     </select>
+</div>
+<div>
+
 </div>
