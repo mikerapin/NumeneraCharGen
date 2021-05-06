@@ -24,14 +24,15 @@ namespace NumeneraCharGen.Controllers
             return View(temp);
         }
 
+        [HttpPost]
         // Generate Character
-        private ActionResult GenerateCharacter(int description_id, int type_id, int focus_id)
+        public ActionResult New(string descriptor, string type, string focus)
         {
             Character newCharacter = new Character()
             {
-                DescriptorData = GetDescriptor(description_id),
-                TypeData = GetType(type_id),
-                FocusData = GetFocus(focus_id)
+                DescriptorData = GetDescriptor(int.Parse(descriptor)),
+                TypeData = GetType(int.Parse(type)),
+                FocusData = GetFocus(int.Parse(focus))
             };
 
             return View(newCharacter);
@@ -110,6 +111,7 @@ namespace NumeneraCharGen.Controllers
         }
 
         // GET: Descriptors
+        // Return all Descriptors from table (alphabetical)
         private List<Descriptor> GetDescriptors()
         {
             var descriptors = db.Descriptors.OrderBy(x => x.Name);
@@ -117,6 +119,7 @@ namespace NumeneraCharGen.Controllers
         }
 
         // GET: Descriptor
+        // Return one descriptor from table based on given descriptor_id
         private List<Descriptor> GetDescriptor(int descriptor_id)
         {
             var descriptor = db.Descriptors.Where(x => x.Descriptor_id == descriptor_id);
@@ -124,6 +127,7 @@ namespace NumeneraCharGen.Controllers
         }
 
         // GET: Types
+        // Return all Types from table (alphabetical)
         private List<Models.Type> GetTypes()
         {
             var types = db.Types.OrderBy(x => x.Name);
@@ -131,6 +135,7 @@ namespace NumeneraCharGen.Controllers
         }
 
         // GET: Type
+        // Return one type from table based on given type_id
         private List<Models.Type> GetType(int type_id)
         {
             var types = db.Types.Where(x => x.Type_id == type_id);
@@ -138,6 +143,7 @@ namespace NumeneraCharGen.Controllers
         }
 
         // GET: Foci
+        // Return all Foci from table (alphabetical)
         private List<Focus> GetFoci()
         {
             var focus = db.Foci.OrderBy(x => x.Name);
@@ -145,9 +151,10 @@ namespace NumeneraCharGen.Controllers
         }
 
         // GET: Focus
+        // Return one focus from table based on given focus_id
         private List<Focus> GetFocus(int focus_id)
         {
-            var focus = db.Foci.OrderBy(x => x.Focus_id == focus_id);
+            var focus = db.Foci.Where(x => x.Focus_id == focus_id);
             return focus.ToList();
         }
 

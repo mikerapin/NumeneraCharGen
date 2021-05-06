@@ -1,7 +1,24 @@
-﻿
+﻿@model NumeneraCharGen.Models.Character
+
 @{
     ViewBag.Title = "New";
 }
 
-<h2>New</h2>
+@{ 
+    var descriptor = Model.DescriptorData.First();
+    var type = Model.TypeData.First();
+    var focus = Model.FocusData.First();
+
+    int? might = descriptor.Might + type.Might + focus.Might;
+    int? speed = descriptor.Speed + type.Speed + focus.Speed;
+    int? intellect = descriptor.Intellect + type.Intellect + focus.Intellect;
+
+    List<string> eq = new List<string>();
+    eq = type.Equipment.Split('~').ToList();
+}
+
+<h2>New Character</h2>
+
+<p>I am a <b>@descriptor.Name</b> <b>@type.Name</b> who <b>@focus.Name</b></p>
+
 
