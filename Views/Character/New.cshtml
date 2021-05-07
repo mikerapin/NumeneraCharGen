@@ -35,6 +35,8 @@
     List<string> equipment = new List<string>();
     equipment = eq.Split('~').ToList();
 
+    int shins = (int)descriptor.Shins + (int)type.Shins;
+
 }
 
 
@@ -54,7 +56,7 @@
     <p>Intellect Edge: @type.Intellect_edge</p>
 </div>
 <div>
-    <p>Training: </p>
+    <p><b>Training: </b></p>
     <ul>
         @foreach (string item in training)
         {
@@ -63,7 +65,7 @@
     </ul>
 </div>
 <div>
-    <p>Inabilities: </p>
+    <p><b>Inabilities: </b></p>
     <ul>
         @foreach (string item in inabilities)
         {
@@ -72,12 +74,13 @@
     </ul>
 </div>
 <div>
-    <p>Equipment: </p>
+    <p><b>Equipment: </b></p>
     <ul>
         @foreach (string item in equipment)
         {
             <li>@item</li>
         }
+        <p>Shins: @shins</p>
     </ul>
 </div>
 
