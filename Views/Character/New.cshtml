@@ -9,16 +9,75 @@
     var type = Model.TypeData.First();
     var focus = Model.FocusData.First();
 
-    int? might = descriptor.Might + type.Might + focus.Might;
-    int? speed = descriptor.Speed + type.Speed + focus.Speed;
-    int? intellect = descriptor.Intellect + type.Intellect + focus.Intellect;
+    int might = (int)descriptor.Might + (int)type.Might + (int)focus.Might;
+    int speed = (int)descriptor.Speed + (int)type.Speed + (int)focus.Speed;
+    int intellect = (int)descriptor.Intellect + (int)type.Intellect + (int)focus.Intellect;
 
-    List<string> eq = new List<string>();
-    eq = type.Equipment.Split('~').ToList();
+    // Training
+    string tr = (descriptor.Training == null) ? "" : descriptor.Training;
+    if (type.Training != null) { tr += (tr =="") ? type.Training : "~" + type.Training; }
+
+    List<string> training = new List<string>();
+    training = tr.Split('~').ToList();
+
+    // Inabilities
+    string ina = (descriptor.Inability == null) ? "" : descriptor.Inability;
+    if (type.Inability != null) { ina += (ina == "") ? type.Inability : "~" + type.Inability; }
+
+    List<string> inabilities = new List<string>();
+    inabilities = ina.Split('~').ToList();
+
+    // Equipment
+    string eq = (descriptor.Equipment == null) ? "" : descriptor.Equipment;
+    if (type.Equipment != null) { eq += (eq == "") ? type.Equipment : "~" + type.Equipment; }
+    if (focus.Equipment != null) { eq += (eq == "") ? type.Equipment : "~" + focus.Equipment; }
+
+    List<string> equipment = new List<string>();
+    equipment = eq.Split('~').ToList();
+
 }
+
 
 <h2>New Character</h2>
 
-<p>I am a <b>@descriptor.Name</b> <b>@type.Name</b> who <b>@focus.Name</b></p>
-
+<div>
+    <p>"I am a <b>@descriptor.Name</b> <b>@type.Name</b> who <b>@focus.Name"</b></p>
+</div>
+<div>
+    <p>Might: @might</p>
+    <p>Speed: @speed</p>
+    <p>Intellect: @intellect</p>
+</div>
+<div>
+    <p>Might Edge: @type.Might_edge</p>
+    <p>Speed Edge: @type.Speed_edge</p>
+    <p>Intellect Edge: @type.Intellect_edge</p>
+</div>
+<div>
+    <p>Training: </p>
+    <ul>
+        @foreach (string item in training)
+        {
+            <li>@item</li>
+        }
+    </ul>
+</div>
+<div>
+    <p>Inabilities: </p>
+    <ul>
+        @foreach (string item in inabilities)
+        {
+            <li>@item</li>
+        }
+    </ul>
+</div>
+<div>
+    <p>Equipment: </p>
+    <ul>
+        @foreach (string item in equipment)
+        {
+            <li>@item</li>
+        }
+    </ul>
+</div>
 
