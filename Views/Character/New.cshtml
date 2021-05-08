@@ -40,47 +40,51 @@
 }
 
 
-<h2>New Character</h2>
-
 <div>
-    <p>"I am a <b>@descriptor.Name</b> <b>@type.Name</b> who <b>@focus.Name"</b></p>
+    <h3>"I am a <b>@descriptor.Name</b> <b>@type.Name</b> who <b>@focus.Name"</b></h3>
 </div>
-<div>
-    <p>Might: @might</p>
-    <p>Speed: @speed</p>
-    <p>Intellect: @intellect</p>
-</div>
-<div>
-    <p>Might Edge: @type.Might_edge</p>
-    <p>Speed Edge: @type.Speed_edge</p>
-    <p>Intellect Edge: @type.Intellect_edge</p>
-</div>
-<div>
-    <p><b>Training: </b></p>
-    <ul>
-        @foreach (string item in training)
-        {
-            <li>@item</li>
-        }
-    </ul>
-</div>
-<div>
-    <p><b>Inabilities: </b></p>
-    <ul>
-        @foreach (string item in inabilities)
-        {
-            <li>@item</li>
-        }
-    </ul>
-</div>
-<div>
-    <p><b>Equipment: </b></p>
-    <ul>
-        @foreach (string item in equipment)
-        {
-            <li>@item</li>
-        }
-        <p>Shins: @shins</p>
-    </ul>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-sm-3">Might: @might</div>
+        <div class="col-sm-3">Speed: @speed</div>
+        <div class="col-sm-3">Intellect: @intellect</div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-3">Might Edge: @type.Might_edge</div>
+        <div class="col-sm-3">Speed Edge: @type.Speed_edge</div>
+        <div class="col-sm-3">Intellect Edge: @type.Intellect_edge</div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md">
+            <p><b>Training: </b></p>
+            <ul>
+                @foreach (string item in training)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </div>
+        <div class="col-md">
+            <p><b>Inabilities: </b></p>
+            <ul>
+                @foreach (string item in inabilities)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-lg">
+            <p><b>Equipment: </b></p>
+            <ul>
+                @foreach (string item in equipment)
+                {
+                    <li>@item</li>
+                }
+                <p>Shins: @shins</p>
+            </ul>
+        </div>
+    </div>
 </div>
 
