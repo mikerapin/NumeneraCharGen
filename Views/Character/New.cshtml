@@ -14,8 +14,8 @@
     int intellect = (int)descriptor.Intellect + (int)type.Intellect + (int)focus.Intellect;
 
     // Training
-    string tr = (descriptor.Training == null) ? "" : descriptor.Training;
-    if (type.Training != null) { tr += (tr =="") ? type.Training : "~" + type.Training; }
+    string tr = (descriptor.Training == null || descriptor.Training == "") ? "" : descriptor.Training;
+    if (type.Training != null && type.Training != "") { tr += (tr =="") ? type.Training : "~" + type.Training; }
 
     List<string> training = new List<string>();
     training = tr.Split('~').ToList();
@@ -29,8 +29,8 @@
 
     // Equipment
     string eq = (descriptor.Equipment == null) ? "" : descriptor.Equipment;
-    if (type.Equipment != null) { eq += (eq == "") ? type.Equipment : "~" + type.Equipment; }
-    if (focus.Equipment != null) { eq += (eq == "") ? type.Equipment : "~" + focus.Equipment; }
+    if (type.Equipment != null && type.Equipment != "") { eq += (eq == "") ? type.Equipment : "~" + type.Equipment; }
+    if (focus.Equipment != null && focus.Equipment != "") { eq += (eq == "") ? type.Equipment : "~" + focus.Equipment; }
 
     List<string> equipment = new List<string>();
     equipment = eq.Split('~').ToList();

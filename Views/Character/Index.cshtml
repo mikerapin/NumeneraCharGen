@@ -6,43 +6,46 @@
 
 <h2>Character Creation</h2>
 
-<b>Creating a character is as easy as describing them!</b>
+<div class="row">
+    <b>Creating a character is as easy as describing them!</b>
+</div>
 
 <!-- HTML form to collect dropdown selections -->
 <form action="Character/New" , method="post">
     <div class="form-group">
-        <span>I am a... </span>
-
-        <select asp-for="descriptor_id" name="descriptor" id="descriptor">
-            <optgroup label="Descriptor">
-                <option value=""></option> <!-- One blank -->
-                @foreach (var item in Model.DescriptorData)
-                {
-                    <option value="@item.Descriptor_id">@item.Name</option>
-                }
-            </optgroup>
-        </select>
-        <select asp-for="type_id" name="type" id="type">
-            <optgroup label="Types">
-                <option value=""></option> <!-- One blank -->
-                @foreach (var item in Model.TypeData)
-                {
-                    <option value="@item.Type_id">@item.Name</option>
-                }
-            </optgroup>
-        </select>
-        <span>  who  </span>
-        <select asp-for="focus_id" name="focus" id="focus">
-            <optgroup label="Focus">
-                <option value=""></option> <!-- One blank -->
-                @foreach (var item in Model.FocusData)
-                {
-                    <option value="@item.Focus_id">@item.Name</option>
-                }
-            </optgroup>
-        </select>
+        <div class="row">
+            <p class="m-3">I am a... </p>
+            <select class="btn btn-secondary dropdown-toggle m-2" asp-for="descriptor_id" name="descriptor" id="descriptor">
+                <optgroup label="Descriptor">
+                    <option value=""></option> <!-- One blank -->
+                    @foreach (var item in Model.DescriptorData)
+                    {
+                        <option value="@item.Descriptor_id">@item.Name</option>
+                    }
+                </optgroup>
+            </select>
+            <select class="btn btn-secondary dropdown-toggle m-2" asp-for="type_id" name="type" id="type">
+                <optgroup label="Types">
+                    <option value=""></option> <!-- One blank -->
+                    @foreach (var item in Model.TypeData)
+                    {
+                        <option value="@item.Type_id">@item.Name</option>
+                    }
+                </optgroup>
+            </select>
+            <p class="m-3">  who  </p>
+            <select class="btn btn-secondary dropdown-toggle m-2" asp-for="focus_id" name="focus" id="focus">
+                <optgroup label="Focus">
+                    <option value=""></option> <!-- One blank -->
+                    @foreach (var item in Model.FocusData)
+                    {
+                        <option value="@item.Focus_id">@item.Name</option>
+                    }
+                </optgroup>
+            </select>
+        </div>
     </div>
-    <div>
+    <div class="row">
         <input class="btn btn-primary btn-lg" type="submit" value="Generate Character" />
     </div>
 </form>
