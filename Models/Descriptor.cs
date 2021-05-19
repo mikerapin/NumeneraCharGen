@@ -12,7 +12,7 @@ namespace NumeneraCharGen.Models
         [Key]
         public int Descriptor_id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Descriptor Name is Required.")]
         [StringLength(45)]
         public string Name { get; set; }
 
