@@ -4,19 +4,38 @@
     ViewBag.Title = "Index";
 }
 
+
+
 <h2>All Descriptors</h2>
 <h4>Sorted by Name</h4>
 
-@foreach (var item in Model)
-{
+@foreach (var descriptor in Model)
+    {
     <div>
         @*<div>
                 @Html.DisplayFor(modelItem => item.Beers1.BeerName)
             </div>*@
 
         <div>
-            <b>@Html.DisplayFor(modelItem => item.Name)</b> <br />
-            <p>Page: @Html.DisplayFor(modelItem => item.Page)</p>
+            <b>@Html.DisplayFor(modelItem => descriptor.Name)</b>
+            <div>
+                <div>Might: @Html.DisplayFor(modelItem => descriptor.Might)</div>
+                <div>Speed: @Html.DisplayFor(modelItem => descriptor.Speed)</div>
+                <div>Intellect: @Html.DisplayFor(modelItem => descriptor.Intellect)</div>
+            </div>
+            <div>Training:
+                <ul>
+                    @{ 
+                        List<string> training = descriptor.Training.Split('~').ToList();
+                    }
+                    @foreach (string item in training)
+                    {
+                        <li>@item</li>
+                    }
+                </ul>
+            </div>
+
+            <p>Page: @Html.DisplayFor(modelItem => descriptor.Page)</p>
         </div>
 
         @*CRUD CODE
