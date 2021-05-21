@@ -47,28 +47,29 @@ namespace NumeneraCharGen.Controllers
             try
             {
 
-                    if (AddNewDescriptor(collection))
-                    {
-                        ViewBag.Message = "Descriptor added successfully";
-                        return View();
-                    }
+                if (AddNewDescriptor())
+                {
+                    ViewBag.Message = "Descriptor added successfully";
+                    return View();
+                }
 
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 ViewBag.ErrorMessage = "Please fill out all neccessary data before submitting";
                 return View();
             }
         }
 
         // Add Descriptor
-        public bool AddNewDescriptor(FormCollection collection)
+        public bool AddNewDescriptor()
         {
             // Pass Values to Connection
             connection();
-            SqlCommand command = new SqlCommand("AddNewDescriptor", con);
+            SqlCommand command = new SqlCommand("numeneradb.AddNewDescriptor", con);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@Name", Request.Form["Name"]);
             command.Parameters.AddWithValue("@Might", Request.Form["Might"]);
@@ -84,10 +85,10 @@ namespace NumeneraCharGen.Controllers
             command.Parameters.AddWithValue("@Page", Request.Form["Page"]);
             
             con.Open();
-            int i = command.ExecuteNonQuery(); /* The Code messes up here, automatically triggers the catch in Creat() above */
+            int rowsAdded = command.ExecuteNonQuery();
             con.Close();
 
-            if (i >= 1) { return true; }
+            if (rowsAdded > 0) { return true; }
             else { return false; }
         }
 
@@ -108,8 +109,9 @@ namespace NumeneraCharGen.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e);
                 return View();
             }
         }
