@@ -10,12 +10,8 @@
 <h4>Sorted by Name</h4>
 
 @foreach (var descriptor in Model)
-    {
+{
     <div>
-        @*<div>
-                @Html.DisplayFor(modelItem => item.Beers1.BeerName)
-            </div>*@
-
         <div>
             <b>@Html.DisplayFor(modelItem => descriptor.Name)</b>
             <div>
@@ -23,9 +19,10 @@
                 <div>Speed: @Html.DisplayFor(modelItem => descriptor.Speed)</div>
                 <div>Intellect: @Html.DisplayFor(modelItem => descriptor.Intellect)</div>
             </div>
-            <div>Training:
+            <div>
+                Training:
                 <ul>
-                    @{ 
+                    @{
                         List<string> training = descriptor.Training.Split('~').ToList();
                     }
                     @foreach (string item in training)
@@ -37,13 +34,13 @@
 
             <p>Page: @Html.DisplayFor(modelItem => descriptor.Page)</p>
         </div>
-
-        @*CRUD CODE
-                <div>
-                @Html.ActionLink("Edit", "Edit", new { id=item.BeerID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.BeerID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.BeerID })
-            </div>*@
     </div>
     <br />
 }
+
+@*CRUD CODE for admin only
+        <div>
+        @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+        @Html.ActionLink("Details", "Details", new { id=item.id }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.id })
+    </div>*@
