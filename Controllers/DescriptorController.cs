@@ -15,7 +15,7 @@ namespace NumeneraCharGen.Controllers
         private readonly NumeneraDb db = new NumeneraDb();
         private SqlConnection con;
 
-        private void connection()
+        private void Connection()
         {
             string configString = ConfigurationManager.ConnectionStrings["NumeneraDb"].ToString();
             con = new SqlConnection(configString);
@@ -31,10 +31,12 @@ namespace NumeneraCharGen.Controllers
         // GET: Descriptor/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var descriptor = db.Descriptors.Where(d => d.Descriptor_id == id).FirstOrDefault();
+            return View(descriptor);
         }
 
         // GET: Descriptor/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -68,7 +70,7 @@ namespace NumeneraCharGen.Controllers
         public bool AddNewDescriptor()
         {
             // Pass Values to Connection
-            connection();
+            Connection();
             SqlCommand command = new SqlCommand("numeneradb.AddNewDescriptor", con);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@Name", Request.Form["Name"]);
@@ -94,6 +96,7 @@ namespace NumeneraCharGen.Controllers
 
 
         // GET: Descriptor/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -117,12 +120,14 @@ namespace NumeneraCharGen.Controllers
         }
 
         // GET: Descriptor/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View();
         }
 
         // POST: Descriptor/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
