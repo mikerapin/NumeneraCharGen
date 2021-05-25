@@ -43,6 +43,7 @@ namespace NumeneraCharGen.Controllers
         }
 
         // POST: Descriptor/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -85,7 +86,8 @@ namespace NumeneraCharGen.Controllers
             command.Parameters.AddWithValue("@Equipment", Request.Form["Equipment"]);
             command.Parameters.AddWithValue("@Shins", Request.Form["Shins"]);
             command.Parameters.AddWithValue("@Page", Request.Form["Page"]);
-            
+            command.Parameters.AddWithValue("@Description", Request.Form["Description"]);
+
             con.Open();
             int rowsAdded = command.ExecuteNonQuery();
             con.Close();
