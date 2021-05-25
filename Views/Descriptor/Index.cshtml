@@ -4,7 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-
+@*CRUD CODE for admin only *@
+    <div>
+        @Html.ActionLink("Create New Descriptor", "Create", "Descriptor")
+    </div>
 
 <h2>All Descriptors</h2>
 <h4>Sorted by Name</h4>
@@ -15,32 +18,14 @@
         <div>
             <b>@Html.DisplayFor(modelItem => descriptor.Name)</b>
             <div>
-                <div>Might: @Html.DisplayFor(modelItem => descriptor.Might)</div>
-                <div>Speed: @Html.DisplayFor(modelItem => descriptor.Speed)</div>
-                <div>Intellect: @Html.DisplayFor(modelItem => descriptor.Intellect)</div>
-            </div>
-            <div>
-                Training:
-                <ul>
-                    @{
-                        List<string> training = descriptor.Training.Split('~').ToList();
-                    }
-                    @foreach (string item in training)
-                    {
-                        <li>@item</li>
-                    }
-                </ul>
+                <div>Description:</div>
+                <div>@Html.DisplayFor(modelItem => descriptor.Description)</div>
             </div>
 
             <p>Page: @Html.DisplayFor(modelItem => descriptor.Page)</p>
+            <div>@Html.ActionLink("Details", "Details", "Descriptor", new { id = descriptor.Descriptor_id, }, null)</div>
         </div>
     </div>
     <br />
 }
 
-@*CRUD CODE for admin only
-        <div>
-        @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-        @Html.ActionLink("Details", "Details", new { id=item.id }) |
-        @Html.ActionLink("Delete", "Delete", new { id=item.id })
-    </div>*@
