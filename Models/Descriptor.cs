@@ -42,5 +42,7 @@ namespace NumeneraCharGen.Models
 
         [StringLength(50)]
         public string Page { get; set; }
+
+        public string Description { get; set; }
     }
 }
