@@ -4,27 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>All Descriptors</h2>
+@*CRUD CODE for admin only *@
+<div>
+    @Html.ActionLink("Create New Focus", "Create", "Focus")
+</div>
+
+<h2>All Foci</h2>
 <h4>Sorted by Name</h4>
 
-@foreach (var item in Model)
+
+@foreach (var focus in Model)
 {
     <div>
-        @*<div>
-                @Html.DisplayFor(modelItem => item.Beers1.BeerName)
-            </div>*@
-
         <div>
-            <b>@Html.DisplayFor(modelItem => item.Name)</b> <br />
-            <p>Page: @Html.DisplayFor(modelItem => item.Page)</p>
+            <b>@Html.DisplayFor(modelItem => focus.Name)</b>
+            <div>
+                <div>Description:</div>
+                <div>@Html.DisplayFor(modelItem => focus.Description)</div>
+                <div>Page: @Html.DisplayFor(modelItem => focus.Page)</div>
+                <div>@Html.ActionLink("Details", "Details", "Focus", new { id = focus.Focus_id, }, null)</div>
+            </div>
         </div>
-
-        @*CRUD CODE
-                <div>
-                @Html.ActionLink("Edit", "Edit", new { id=item.BeerID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.BeerID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.BeerID })
-            </div>*@
     </div>
     <br />
 }

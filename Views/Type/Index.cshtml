@@ -1,9 +1,33 @@
-﻿@model NumeneraCharGen.Models.Type
+﻿@model IEnumerable<NumeneraCharGen.Models.Type>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Types</h2>
+@*CRUD CODE for admin only *@
+<div>
+    @Html.ActionLink("Create New Type", "Create", "Type")
+</div>
 
-<p>Information about types as TTRPG "classes"</p>
+<div>Information about Type as TTRPG "classes"</div>
+
+
+
+<h2>All Types</h2>
+<h4>Sorted by Name</h4>
+
+@foreach (var type in Model)
+{
+    <div>
+        <div>
+            <b>@Html.DisplayFor(modelItem => type.Name)</b>
+            <div>
+                <div>Description:</div>
+                <div>@Html.DisplayFor(modelItem => type.Description)</div>
+                <div>Page: @Html.DisplayFor(modelItem => type.Page)</div>
+                <div>@Html.ActionLink("Details", "Details", "Descriptor", new { id = type.Type_id, }, null)</div>
+            </div>
+        </div>
+    </div>
+    <br />
+}

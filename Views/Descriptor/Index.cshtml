@@ -20,10 +20,9 @@
             <div>
                 <div>Description:</div>
                 <div>@Html.DisplayFor(modelItem => descriptor.Description)</div>
+                <div>Page: @Html.DisplayFor(modelItem => descriptor.Page)</div>
+                <div>@Html.ActionLink("Details", "Details", "Descriptor", new { id = descriptor.Descriptor_id, }, null)</div>
             </div>
-
-            <p>Page: @Html.DisplayFor(modelItem => descriptor.Page)</p>
-            <div>@Html.ActionLink("Details", "Details", "Descriptor", new { id = descriptor.Descriptor_id, }, null)</div>
         </div>
     </div>
     <br />
